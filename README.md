@@ -27,12 +27,20 @@ How many rows and columns does the dataset contain? In order to output the numbe
     print('Rows:', rows)
     print('Columns:', cols)
 
+##### OUTPUT:
+![image](https://github.com/user-attachments/assets/e3b6eb73-d35c-4dbf-8552-3410767cc02b)
+The dataset contain **953 Rows** and **24 Columns**.
+
 #### STEP 3.2: Data Types of Each Column
 What are the data types of each column? To check the data types of each column, the presented syntax below was used. After using the _.dtype( )_ function, it returns a Series with the data type of each column in the dataframe. For easier reading, the additional _.to_string( )_ function on the syntax code converts the Series to a string format.
    
     # Data types of each column
     print('Column Name and its Data Type:')
     print(tify.dtypes.to_string())
+
+##### OUTPUT:
+![image](https://github.com/user-attachments/assets/4a38a93d-ec96-43d6-acd7-556564a01798)
+As shown in the image above, the data types of each column is indicated next to its column's name.
 
 #### STEP 3.3: Check for Missing Values
 Are there any missing values? To verify if there are columns that has missing values, the syntax below was utilized. The _.isnull( )_ function checks if there are any values missing in the dataframe, then it returns a dataframe with boolean entries. The _.sum( )_ counts the True values (missing values) for each column. In printing the results, the syntax _missing[missing > 0]_ filters the Series and only include columns that have more than 0 missing values. The column names are then put into a list. Finally, it prints the list of column names that have missing values.
@@ -41,3 +49,9 @@ Are there any missing values? To verify if there are columns that has missing va
     missing = tify.isnull().sum()
     print('\nColumns with Missing Values:', missing[missing>0].index.tolist())
     
+##### OUTPUT:
+![image](https://github.com/user-attachments/assets/50a2dc39-f867-4643-9deb-76deab576db6)
+
+### BASIC DESCRIPTIVE STATISTICS
+#### STEP 4: Convert Necessary Columns' Data Type
+As I proceed to code the basic descriptive statistics, I noticed that the data type for 'streams', 'in_deezer_playlists', and 'in_shazam_charts' are object.
