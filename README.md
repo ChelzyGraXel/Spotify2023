@@ -11,7 +11,7 @@ To begin, import the Pandas Library in order to gain access to its functions.
     import pandas as pd
 
 ### STEP 2: Load the CSV file into the Data Frame
-Assign the data frame to a variable named "tify". In this particular step, I asked for help from ChatGPT since it can't load the CSV file without the additional syntax 'encoding='ISO-8859-1'. According to ChatGPT, it is often used for files containing special characters.
+Assign the data frame to a variable named **tify**. In this particular step, I asked for help from ChatGPT since it can't load the CSV file without the additional syntax 'encoding='ISO-8859-1'. According to ChatGPT, it is often used for files containing special characters.
 
     # Read CSV file
     tify = pd.read_csv('spotify-2023.csv', encoding='ISO-8859-1')
@@ -63,14 +63,8 @@ As I proceed to code the basic descriptive statistics, I noticed that the data t
 
 Using the function _pd.to_numeric_, it automatically converts the data type of a particular column from object to float.
 
-### STEP 5: Sort the Dataset
-In the following steps of this project, there would be tasks (e.g., display the top 5 most streamed tracks) that require the dataset to be in order. In line with this, the dataset has been sorted out in descending order based on the number of streams. The following syntax below was used:
-
-    # Sort the data frame in descending order based on 'streams'
-    tify.sort_values(by='streams', ascending=False).reset_index(drop=True)
-
 ## BASIC DESCRIPTIVE STATISTICS
-### STEP 6.1: Mean, Median, and Standard Deviation
+### STEP 5.1: Mean, Median, and Standard Deviation
 What are the mean, median, and standard deviation of the streams column? In order to output the aforementioned statistical data, the following syntaxes below are used.
 
 For the mean, I simply used the function _mean( )_, then assigned the result to a variable named **vile**.
@@ -99,15 +93,23 @@ Here's how to print the results.
 The calculated mean, median, and standard deviation for the column streams are 514,137,424.94, 290,530,915, and 566,856,949.04, respectively.
 ![image](https://github.com/user-attachments/assets/9ff1f684-f0cc-45d2-aa44-6d651cd06dcb)
 
-### STEP 6.2: Import the Matplot Library and Seaborn Library
+### STEP 5.2: Import the Matplot Library and Seaborn Library
 Before we proceed, import the necessary libraries first since their functions will be used later for graphing.
 
     # Import the Matplot Library and the Seaborn Library
     import matplotlib.pyplot as plt
     import seaborn as sns
 
-### STEP 6.3: Distribution of released_year and artist_count (Graphing)
+### STEP 5.3: Distribution of released_year and artist_count (Graphing)
 What is the distribution of released_year and artist_count? Are there any noticeable trends or outliers?
+
+##### OUTPUT:
+
+### STEP 6: Sort the Dataset
+In the following steps of this project, there would be tasks (e.g., display the top 5 most streamed tracks) that require the dataset to be in order. In line with this, the dataset has been sorted out in descending order based on the number of streams. The following syntax below was used, and it is assigned to a variable named **stify**.
+
+    # Sort the data frame in descending order based on 'streams'
+    stify = tify.sort_values(by='streams', ascending=False).reset_index(drop=True)
 
 ## TOP PERFORMERS
 ## TEMPORAL TRENDS
