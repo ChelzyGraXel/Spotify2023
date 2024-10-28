@@ -39,7 +39,7 @@ What are the data types of each column? To check the data types of each column, 
     print(tify.dtypes.to_string())
 
 ##### OUTPUT:
-![image](https://github.com/user-attachments/assets/4a38a93d-ec96-43d6-acd7-556564a01798)
+![image](https://github.com/user-attachments/assets/e4f5d06e-ca22-4df7-817e-94e0c89d1abe)
 As shown in the image above, the data types of each column is indicated next to its column's name.
 
 #### STEP 3.3: Check for Missing Values
@@ -51,7 +51,50 @@ Are there any missing values? To verify if there are columns that has missing va
     
 ##### OUTPUT:
 ![image](https://github.com/user-attachments/assets/50a2dc39-f867-4643-9deb-76deab576db6)
+The columns that has missing values are 'in_shazam_charts' and 'key'.
+
+#### STEP 4: Convert Necessary Columns' Data Type
+As I proceed to code the basic descriptive statistics, I noticed that the data type for 'streams', 'in_deezer_playlists', and 'in_shazam_charts' is object. In this case, the object is immutable so it is highly recommended to convert it first to float data type. How do we do that?
+
+    # Convert necessary columns from "object" to "float"
+    tify['streams'] = pd.to_numeric(tify['streams'],errors='coerce')
+    tify['in_deezer_playlists'] = pd.to_numeric(tify['streams'],errors='coerce')
+    tify['in_shazam_charts'] = pd.to_numeric(tify['streams'],errors='coerce')
+
+Using the function _pd.to_numeric_, it automatically converts the data type of a particular column from object to float.
+
+#### STEP 5: Sort the Dataset
+In the following steps of this project, there would be tasks (e.g. display the top 5 most streamed tracks) that requires the dataset to be in order. In line with this, the dataset has been sorted out in descending order based on the number of streams. The following syntax below was used:
+
+    # Sort the dataframe descending order based on 'streams'
+    tify.sort_values(by='streams', ascending=False).reset_index(drop=True)
 
 ### BASIC DESCRIPTIVE STATISTICS
-#### STEP 4: Convert Necessary Columns' Data Type
-As I proceed to code the basic descriptive statistics, I noticed that the data type for 'streams', 'in_deezer_playlists', and 'in_shazam_charts' are object.
+#### STEP 6.1: Mean, Median, and Standard Deviation
+What are the mean, median, and standard deviation of the streams column? In order to output the aforementioned statistical data, the following syntaxes below are used.
+
+For the mean, I simply used the function _mean( )_, then assigned the result to a variable named **vile**.
+
+    # Mean of the column 'streams'
+    vile = tify['streams'].mean()
+
+For the median, I simply used the function _median( )_, then assigned the result to a variable named **mid**.
+
+    # Median of the column 'streams'
+    mid = tify['streams'].median()
+
+For the standard deviation, I simply used the function _std( )_, then assigned the result to a variable named **skyhigh**.
+
+    # Standard deviation of the column 'streams'
+    skyhigh = tify['streams'].std()
+
+Here's how to print the results.
+
+    # Print the results
+    print('Mean:', vile)
+    print('Median:', mid)
+    print('Standard Deviation:', skyhigh)
+
+##### OUTPUT:
+![image](https://github.com/user-attachments/assets/9ff1f684-f0cc-45d2-aa44-6d651cd06dcb)
+
