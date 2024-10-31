@@ -1,4 +1,4 @@
-# Exploratory Data Analysis on Spotify 2023 Dataset
+# Exploratory Data Analysis on Spotify 2023 Dataset 🎶
 In this deliverable, you will perform an exploratory data analysis (EDA) on a dataset containing information about popular tracks on Most Streamed Spotify Songs 2023. This task aims to analyze, visualize, and interpret the data to extract meaningful insights.
 
 ## INTRODUCTION
@@ -11,12 +11,12 @@ To begin, import the Pandas Library in order to gain access to its functions.
     import pandas as pd
 
 #### STEP 2: Load the CSV file into the Data Frame
-Assign the data frame to a variable named **tify**. In this particular step, I asked for help from ChatGPT since it can't load the CSV file without the additional syntax 'encoding='ISO-8859-1'. According to ChatGPT, it is often used for files containing special characters.
+Assign the data frame to a variable named **tify**. In this particular step, I asked for help from ChatGPT since it can't load the CSV file without the additional syntax `encoding='ISO-8859-1`. According to ChatGPT, it is often used for files containing special characters.
 
     # Read CSV file
     tify = pd.read_csv('spotify-2023.csv', encoding='ISO-8859-1')
 
-## OVERVIEW OF DATASET
+## 🔎 OVERVIEW OF DATASET
 #### STEP 3.1: Rows and Columns of the Dataset
 How many rows and columns does the dataset contain? In order to output the number of columns and rows of the dataset, the following syntax was used:
 
@@ -32,7 +32,7 @@ The dataset contains **953 Rows** and **24 Columns**.
 ![image](https://github.com/user-attachments/assets/e3b6eb73-d35c-4dbf-8552-3410767cc02b)
 
 #### STEP 3.2: Data Types of Each Column
-What are the data types of each column? The syntax below was used to check the data types of each column. After using the _.dtype( )_ function, it returns a Series with the data type of each column in the data frame. For easier reading, the additional _.to_string( )_ function on the syntax code converts the Series to a string format.
+What are the data types of each column? The syntax below was used to check the data types of each column. After using the `.dtype()` function, it returns a Series with the data type of each column in the data frame. For easier reading, the additional `.to_string()` function on the syntax code converts the Series to a string format.
    
     # Data types of each column
     print('Column Name and its Data Type:')
@@ -43,7 +43,7 @@ As shown in the image below, the data types of each column are indicated next to
 ![image](https://github.com/user-attachments/assets/e4f5d06e-ca22-4df7-817e-94e0c89d1abe)
 
 #### STEP 3.3: Check for Missing Values
-Are there any missing values? To verify if there are columns that have missing values, the syntax below was utilized. The _.isnull( )_ function checks if there are any values missing in the data frame, then it returns a data frame with boolean entries. The _.sum( )_ counts the True values (missing values) for each column. In printing the results, the syntax _missing[missing > 0]_ filters the Series and only include columns that have more than 0 missing values. The column names are then put into a list. Finally, it prints the list of column names that have missing values.
+Are there any missing values? To verify if there are columns that have missing values, the syntax below was utilized. The `.isnull()` function checks if there are any values missing in the data frame, then it returns a data frame with boolean entries. The `.sum()` counts the True values (missing values) for each column. In printing the results, the syntax _missing[missing > 0]_ filters the Series and only include columns that have more than 0 missing values. The column names are then put into a list. Finally, it prints the list of column names that have missing values.
 
     # Check if there are NaN values
     missing = tify.isnull().sum()
@@ -63,21 +63,21 @@ As I proceed to code the basic descriptive statistics, I noticed that the data t
 
 Using the function _pd.to_numeric_, it automatically converts the data type of a particular column from object to float.
 
-## BASIC DESCRIPTIVE STATISTICS
+## 📈 BASIC DESCRIPTIVE STATISTICS
 #### STEP 5.1: Mean, Median, and Standard Deviation
 What are the mean, median, and standard deviation of the streams column? In order to output the aforementioned statistical data, the following syntaxes below are used.
 
-For the mean, I simply used the function _mean( )_, then assigned the result to a variable named **vile**.
+For the mean, I simply used the function `.mean()`, then assigned the result to a variable named **vile**.
 
     # Mean of the column 'streams'
     vile = tify['streams'].mean()
 
-For the median, I simply used the function _median( )_, then assigned the result to a variable named **mid**.
+For the median, I simply used the function `.median()`, then assigned the result to a variable named **mid**.
 
     # Median of the column 'streams'
     mid = tify['streams'].median()
 
-For the standard deviation, I simply used the function _std( )_, then assigned the result to a variable named **skyhigh**.
+For the standard deviation, I simply used the function `.std()`, then assigned the result to a variable named **skyhigh**.
 
     # Standard deviation of the column 'streams'
     skyhigh = tify['streams'].std()
@@ -101,7 +101,7 @@ Before we proceed, import the necessary libraries first since their functions wi
     import seaborn as sns
 
 #### STEP 5.3: Distribution of released_year and artist_count (Graphing)
-What is the distribution of released_year and artist_count? Are there any noticeable trends or outliers?
+What is the distribution of released_year and artist_count? Are there any noticeable trends or outliers? At first, I am having second thoughts if I would use histogram or boxplot to graph the data being asked to be obsserved. I have decided to use boxplot because it is easier to determine the outliers in this type of graphing. As follows, there are two boxplot graph for released_year and artist_count separately.
 
 **Boxplot Graph of Released Year**
 
@@ -148,8 +148,11 @@ In the following steps of this project, there would be tasks (e.g., display the 
     # Sort the data frame in descending order based on 'streams'
     stify = tify.sort_values(by='streams', ascending=False).reset_index(drop=True)
 
-## TOP PERFORMERS
-## TEMPORAL TRENDS
-## GENRE AND MUSICAL CHARACTERISTICS
-## PLATFORM POPULARITY
-## ADVANCED ANALYSIS
+## 🎤 TOP PERFORMERS
+## 🎼 TEMPORAL TRENDS
+## 🎧 GENRE AND MUSICAL CHARACTERISTICS
+## 🍿 PLATFORM POPULARITY
+## 🤓 ADVANCED ANALYSIS
+
+## 🔗 REFERENCES
+
