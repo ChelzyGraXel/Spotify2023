@@ -1,7 +1,7 @@
 # Exploratory Data Analysis on Spotify 2023 Dataset 🎧
 In this deliverable, you will perform an exploratory data analysis (EDA) on a dataset containing information about popular tracks on Most Streamed Spotify Songs 2023. This task aims to analyze, visualize, and interpret the data to extract meaningful insights.
 
-## INTRODUCTION
+## 👩‍💻 INTRODUCTION
 What is an **_Exploratory Data Analysis (EDA)_**? It is an approach in data analysis that gives emphasis on the exploration and visualization of datasets to observe patterns, trends, and anomalies. Moreover, it is a helpful tool to understand a certain phenomenon and develop insights regarding the data given. Aside from that, it is best used for descriptive statistics, correlation analysis, group comparisons and etc. For this project, the task is to conduct an exploratory data analysis on **Most Streamed Spotify Songs 2023**.
 ___
 #### STEP 1: Import the Pandas Library
@@ -21,7 +21,7 @@ tify = pd.read_csv('spotify-2023.csv', encoding='ISO-8859-1')
 ___
 ## 🔎 OVERVIEW OF DATASET
 #### STEP 3.1: Rows and Columns of the Dataset
-How many rows and columns does the dataset contain? In order to output the number of columns and rows of the dataset, the following syntax was used:
+How many rows and columns does the dataset contain? In order to output the number of columns and rows of the dataset, the following syntax was used.
 
 ```python
 # Rows and columns of the dataset
@@ -200,7 +200,7 @@ The track that has the highest number of streams is **Blinding Lights** performe
 ![image](https://github.com/user-attachments/assets/9a202999-8319-425b-81c2-ea24e05d3fdf)
 
 #### STEP 7.2: Top 5 Most Streamed Tracks of 2023
-Display the top 5 most streamed tracks. It actually almost has the same syntax as the previous one, but this time, instead of `head(1)`, it would be just `head()`. This line of code automatically outputs the first five rows of the data frame. The output is assigned to a variable named **top5**. 
+Display the top 5 most streamed tracks. It actually almost has the same syntax as the previous one, but this time, instead of `.head(1)`, it would be just `.head()`. This line of code automatically outputs the first five rows of the data frame. The output is assigned to a variable named **top5**. 
 
 ```python
 # Top 5 most streamed tracks
@@ -221,7 +221,7 @@ Who are the top 5 most frequent artists based on the number of tracks in the dat
 stify['artist(s)_name'] = stify['artist(s)_name'].astype(str).str.split(', ')
 ```
 
-After that, use the function `.explode` and `.value_counts()` to count the occurrences of the artist's name. To retrieve only the top 5, I used the function `.head(5)`, then it was assigned to variable `top5fr`. 
+After that, use the function `.explode` and `.value_counts()` to count the occurrences of the artist's name. To retrieve only the top 5, I used the function `.head()`, then it was assigned to variable `top5fr`. 
 
 ```python
 # Explode the column and count occurrences
