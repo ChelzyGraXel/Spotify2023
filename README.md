@@ -1,7 +1,7 @@
 # Exploratory Data Analysis on Spotify 2023 Dataset 🎧
 In this deliverable, you will perform an exploratory data analysis (EDA) on a dataset containing information about popular tracks on Most Streamed Spotify Songs 2023. This task aims to analyze, visualize, and interpret the data to extract meaningful insights.
 
-## 👩‍💻 INTRODUCTION
+## 💻 INTRODUCTION
 What is an **_Exploratory Data Analysis (EDA)_**? It is an approach in data analysis that gives emphasis on the exploration and visualization of datasets to observe patterns, trends, and anomalies. Moreover, it is a helpful tool to understand a certain phenomenon and develop insights regarding the data given. Aside from that, it is best used for descriptive statistics, correlation analysis, group comparisons and etc. For this project, the task is to conduct an exploratory data analysis on **Most Streamed Spotify Songs 2023**.
 ___
 #### STEP 1: Import the Pandas Library
@@ -18,7 +18,7 @@ Assign the data frame to a variable named **tify**. In this particular step, I a
 # Read CSV file
 tify = pd.read_csv('spotify-2023.csv', encoding='ISO-8859-1')
 ```
-___
+
 ## 🔎 OVERVIEW OF DATASET
 #### STEP 3.1: Rows and Columns of the Dataset
 How many rows and columns does the dataset contain? In order to output the number of columns and rows of the dataset, the following syntax was used.
@@ -76,7 +76,7 @@ tify['in_shazam_charts'] = pd.to_numeric(tify['streams'],errors='coerce')
 ```
 
 Using the function _pd.to_numeric_, it automatically converts the data type of a particular column from object to float. The `errors='coerce'` is a function in Pandas that tells the program to handle errors by converting invalid or non-convertible values to NaN (Not a Number) instead of raising an error.
-___
+
 ## 📈 BASIC DESCRIPTIVE STATISTICS
 #### STEP 5.1: Mean, Median, and Standard Deviation
 What are the mean, median, and standard deviation of the streams column? In order to output the aforementioned statistical data, the following syntaxes below are used.
@@ -183,7 +183,7 @@ In the following steps of this project, there would be tasks (e.g., display the 
 # Sort the data frame in descending order based on 'streams'
 stify = tify.sort_values(by='streams', ascending=False).reset_index(drop=True)
 ```
-___
+
 ## 🎤 TOP PERFORMERS
 #### STEP 7.1: Most Streamed Track of 2023
 Which track has the highest number of streams? In order to determine the track with the highest number of streams, the syntax below was used. In my code, I specified to only output the columns: `track_name`, `artist(s)_name`, and `streams`. The output is assigned to a variable named **toptrack**.
@@ -267,12 +267,12 @@ plt.show()
 ```
 
 ##### OUTPUT:
-[EXPLANATION]
+In the early years, the number of tracks released was anticipatedly low, largely due to the fact that digital streaming had not yet become widely popular. Media streaming only began in the early 1990s and it took several more years for streaming platforms to gain popularity and become accessible to the general public (Volle, 2023). As internet access became more widespread starting in the 2010s, there was a noticeable rise in the number of tracks. If we analyze the graph further, the number of tracks released from 2020 to 2022 exponentially increased at its peak. This is probably influenced by the global COVID-19 pandemic, wherein a lot of artists released their music during a time when people would more likely have the time to stream at their homes during the lockdown.
 
 ![image](https://github.com/user-attachments/assets/58d6445e-d97b-4385-857c-b1b8f20b6e1c)
 
 #### STEP 8.2: Number of Tracks Released Over Time (Per Month)
-Does the number of tracks released per month follow any noticeable patterns? Which month sees the most releases?
+Does the number of tracks released per month follow any noticeable patterns? In order to easily navigate patterns in a given data set, data visualization is important. To plot the number of tracks released per month in a line graph, the syntax below was used.
 
 ```python
 # Count the number of tracks released each month
@@ -296,10 +296,10 @@ plt.show()
 ```
 
 ##### OUTPUT:
-[EXPLANATION]
+Music can sometimes be personally seasonal; preferences can depend on one’s mood, situation, or even the time of year. Just as listeners may be drawn to different styles or genres depending on their feelings, artists themselves often release music in a way that reflects their own emotions, inspirations, or even the season. The line graph below shows the number of tracks released each month of the year. It could be observed that the months of January and May have shown significant spikes in track releases. This could indicate that artists often launched new music at the beginning of the year and before the summer season. From July to August, the number of music releases decreased. The music industry could be considering that many people are on vacation, and they slow down a bit in promotional activities. As the year ends from October to November, there is a distinct increase in the number of tracks released. This might be because the holiday season is coming, and music industries are trying to make an impact before the year's end.
 
 ![image](https://github.com/user-attachments/assets/7868c7a6-38d5-4019-a7af-fc70d3cb9cbc)
-___
+
 ## 🎧 GENRE AND MUSICAL CHARACTERISTICS
 #### STEP 9.1: Correlation between Streamd and Musical Attributes
 Examine the correlation between streams and musical attributes like bpm, danceability_%, and energy_%. Which attributes seem to influence streams the most?
@@ -374,7 +374,7 @@ plt.show()
 [EXPLANATION]
 
 ![image](https://github.com/user-attachments/assets/ac23af04-c9fb-4d8e-af11-f3408fbcd072)
-___
+
 ## 🍿 PLATFORM POPULARITY
 #### STEP 10: Comparison of Platforms (Spotify, Apple Music, Deezer)
 How do the numbers of tracks in spotify_playlists, apple_playlists, and deezer_playlists compare? Which platform seems to favor the most popular tracks?
@@ -395,18 +395,18 @@ plt.show()
 [EXPLANATION]
 
 ![image](https://github.com/user-attachments/assets/91cadede-376d-4fcd-99fc-3148b1dafef3)
-___
+
 ## 🤓 ADVANCED ANALYSIS
 #### STEP 11: Major vs. Minor
 Based on the streams data, can you identify any patterns among tracks with the same key or mode (Major vs. Minor)?
 
 #### STEP 12: Frequently Appearing Artists in Playlist or Charts
+Do certain genres or artists consistently appear in more playlists or charts? Perform an analysis to compare the most frequently appearing artists in playlists or charts.
 
-___
 ## 🔗 REFERENCES
-**Riady, C. J.** Spotify Data 2023 - EDA and Visualizations. kaggle. Retrieved from https://kaggle.com/code/cijojidanriady/spotify-data-2023-eda-and-visualizations?fbclid=IwZXh0bgNhZW0CMTEAAR0zQsqA5ZVMO_1GnC8Klco7jNSIl4_UmSURIfw1VQaspEKErgtoiX6-i5A_aem_t6977cwnT-e7NsnJekeNAQ
+- **Riady, C. J.** Spotify Data 2023 - EDA and Visualizations. kaggle. Retrieved from https://kaggle.com/code/cijojidanriady/spotify-data-2023-eda-and-visualizations?fbclid=IwZXh0bgNhZW0CMTEAAR0zQsqA5ZVMO_1GnC8Klco7jNSIl4_UmSURIfw1VQaspEKErgtoiX6-i5A_aem_t6977cwnT-e7NsnJekeNAQ
+- **Volle, A**. (2023, April).  Streaming Media. Britannica. Retrieved from https://www.britannica.com/technology/streaming-media 
 
-___
 ## ✏️ TOOLS
 #### 📒 Jupyter Notebook
 It is a tool that allows a user to create documents containing code, equations, visualizations, and explanatory text. It is widely utilized in data science, machine learning, academic research, and scientific computing for data exploration, analysis, and presentation.
