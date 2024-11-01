@@ -301,8 +301,8 @@ Music can sometimes be personally seasonal; preferences can depend on one’s mo
 ![image](https://github.com/user-attachments/assets/7868c7a6-38d5-4019-a7af-fc70d3cb9cbc)
 
 ## 🎧 GENRE AND MUSICAL CHARACTERISTICS
-#### STEP 9.1: Correlation between Streamd and Musical Attributes
-Examine the correlation between streams and musical attributes like bpm, danceability_%, and energy_%. Which attributes seem to influence streams the most?
+#### STEP 9.1: Correlation between Streams and Musical Attributes
+To find out which attributes influence streams the most, it is necessary to do a data analysis through visualization. The following syntax was used to examine the correlation between streams and musical attributes such as bpm danceability_% and energy_%. The x-axis represents the values for the musical qualities: blue for energy_%, pink for danceability_%, and purple for BPM (beats per minute). The y-axis represents the total streams for each track in billions.
 
 ```python
 # Customize the graph
@@ -324,12 +324,12 @@ plt.show()
 ```
 
 ##### OUTPUT:
-[EXPLANATION]
+As shown in the graph below, energy_% and danceability_% (blue and pink, respectively) tend to scatter around the lower left on the x-axis, which indicates that most of Spotify’s popular tracks have moderate energy and danceability percentages. The BPM (purple points) are more widespread on the x-axis. In line with this, most tracks with a high number of streams have a BPM below 150, and there are only a few tracks in higher BPM ranges. If we thoroughly analyze the graph, there is no strong linear relationship between the streams and music attributes. Danceability and energy seem to have a slightly more substantial influence on streams, but since the scatter of points is broad, it can not be deduced that there is a correlation between the attributes and streams.
 
 ![image](https://github.com/user-attachments/assets/dfe6a849-0bf2-47cb-9871-bb83dcd12b6a)
 
 #### STEP 9.2: Correlation between Musical Attributes
-Is there a correlation between danceability_% and energy_%? How about valence_% and acousticness_%?
+To examine whether there is a correlation between danceability_% and energy_%, the same as valence_% and acousticness_%, the following syntaxes were used for better visualization of data. For the first graph, the danceability_% lies on the x-axis, and energy_% lies on the y-axis. For the second graph, the x-axis represents valence_%, and the y-axis represents acousticness_%.
 
 **Scatterplot of Danceability Percent and Energy Percent**
 
@@ -349,7 +349,7 @@ plt.show()
 ```
 
 ##### OUTPUT:
-[EXPLANATION]
+As displayed in the scatter plot below, there seems to be a slight positive correlation between the two musical attributes, namely danceability_% and energy_%. As the percentage of danceability increases, there is a tendency for the energy percentage to also rise. However, the correlation is not strong enough to draw conclusions that the danceability percentage positively influences the energy percentage. The plot suggests that higher danceability might be somewhat associated with higher energy in songs, but the correlation is likely weak to moderate.
 
 ![image](https://github.com/user-attachments/assets/93027b33-442c-4c0e-bff5-81ad9c2bece8)
 
@@ -371,7 +371,7 @@ plt.show()
 ```
 
 ##### OUTPUT:
-[EXPLANATION]
+As presented in the scatter plot below, there seems to be little to no linear relationship between valence_% and acousticness_%. As we observe the plot visually, the points are quite scattered across the range, and it doesn’t form any trend. In conclusion, there is a lack of a clear pattern, which implies that valence and acousticness do not have direct linear correlation.
 
 ![image](https://github.com/user-attachments/assets/ac23af04-c9fb-4d8e-af11-f3408fbcd072)
 
