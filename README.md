@@ -1,4 +1,4 @@
-# Exploratory Data Analysis on Spotify 2023 Dataset 🎶
+# Exploratory Data Analysis on Spotify 2023 Dataset 🎧
 In this deliverable, you will perform an exploratory data analysis (EDA) on a dataset containing information about popular tracks on Most Streamed Spotify Songs 2023. This task aims to analyze, visualize, and interpret the data to extract meaningful insights.
 
 ## INTRODUCTION
@@ -11,7 +11,6 @@ To begin, import the Pandas Library in order to gain access to its functions.
 # Import the Pandas Library
 import pandas as pd
 ```
-
 #### STEP 2: Load the CSV file into the Data Frame
 Assign the data frame to a variable named **tify**. In this particular step, I asked for help from ChatGPT since it can't load the CSV file without the additional syntax `encoding='ISO-8859-1`. According to ChatGPT, it is often used for files containing special characters.
 
@@ -19,7 +18,7 @@ Assign the data frame to a variable named **tify**. In this particular step, I a
 # Read CSV file
 tify = pd.read_csv('spotify-2023.csv', encoding='ISO-8859-1')
 ```
-
+___
 ## 🔎 OVERVIEW OF DATASET
 #### STEP 3.1: Rows and Columns of the Dataset
 How many rows and columns does the dataset contain? In order to output the number of columns and rows of the dataset, the following syntax was used:
@@ -53,7 +52,7 @@ As shown in the image below, the data types of each column are indicated next to
 ![image](https://github.com/user-attachments/assets/e4f5d06e-ca22-4df7-817e-94e0c89d1abe)
 
 #### STEP 3.3: Check for Missing Values
-Are there any missing values? To verify if there are columns that have missing values, the syntax below was utilized. The `.isnull()` function checks if there are any values missing in the data frame, then it returns a data frame with boolean entries. The `.sum()` counts the True values (missing values) for each column. In printing the results, the syntax _missing[missing > 0]_ filters the Series and only include columns that have more than 0 missing values. The column names are then put into a list. Finally, it prints the list of column names that have missing values.
+Are there any missing values? To verify if there are columns that have missing values, the syntax below was utilized. The `.isnull()` function checks if there are any values missing in the data frame, then it returns a data frame with boolean entries. The `.sum()` counts the True values (missing values) for each column. In printing the results, the syntax `missing[missing > 0]` filters the Series and only includes columns that have more than 0 missing values. The column names are then put into a list. Finally, it prints the list of column names that have missing values.
 
 ```python
 # Check if there are NaN values
@@ -67,7 +66,7 @@ The columns that have missing values are 'in_shazam_charts' and 'key'.
 ![image](https://github.com/user-attachments/assets/c301b316-380f-403c-bcca-ee868bcb1be8)
 ___
 #### STEP 4: Convert Necessary Columns' Data Type
-As I proceed to code the basic descriptive statistics, I noticed that the data type for 'streams', 'in_deezer_playlists', and 'in_shazam_charts' is object. In this case, the object is immutable, so it is highly recommended that it is converted first to float data type. How do we do that?
+As I proceeded to code the basic descriptive statistics, I noticed that the data type for 'streams,' 'in_deezer_playlists,' and 'in_shazam_charts' is an object. In this case, the object is immutable, so it is highly recommended that it is converted first to float data type. How do we do that?
 
 ```python
 # Convert necessary columns from "object" to "float"
@@ -76,8 +75,8 @@ tify['in_deezer_playlists'] = pd.to_numeric(tify['streams'],errors='coerce')
 tify['in_shazam_charts'] = pd.to_numeric(tify['streams'],errors='coerce')
 ```
 
-Using the function _pd.to_numeric_, it automatically converts the data type of a particular column from object to float.
-
+Using the function _pd.to_numeric_, it automatically converts the data type of a particular column from object to float. The `errors='coerce'` is a function in Pandas that tells the program to handle errors by converting invalid or non-convertible values to NaN (Not a Number) instead of raising an error.
+___
 ## 📈 BASIC DESCRIPTIVE STATISTICS
 #### STEP 5.1: Mean, Median, and Standard Deviation
 What are the mean, median, and standard deviation of the streams column? In order to output the aforementioned statistical data, the following syntaxes below are used.
@@ -117,6 +116,7 @@ The calculated mean, median, and standard deviation for the column streams are 5
 
 ![image](https://github.com/user-attachments/assets/9ff1f684-f0cc-45d2-aa44-6d651cd06dcb)
 
+___
 #### STEP 5.2: Import the Matplot Library and Seaborn Library
 Before we proceed, import the necessary libraries first since their functions will be used later for graphing.
 
@@ -125,9 +125,9 @@ Before we proceed, import the necessary libraries first since their functions wi
 import matplotlib.pyplot as plt
 import seaborn as sns
 ```
-
+___
 #### STEP 5.3: Distribution of released_year and artist_count (Graphing)
-What is the distribution of released_year and artist_count? Are there any noticeable trends or outliers? At first, I am having second thoughts if I would use histogram or boxplot to graph the data being asked to be observed. Then, I have decided to use boxplot because it is easier to determine the outliers in this type of graphing. As follows, there are two boxplot graph for released_year and artist_count separately.
+What is the distribution of released_year and artist_count? Are there any noticeable trends or outliers? At first, I had second thoughts about whether I would use a histogram or boxplot to graph the data being asked to be observed. Then, I decided to use a boxplot because it is easier to determine the outliers in this type of graphing. As follows, there are two boxplot graphs for released_year and artist_count separately.
 
 **Boxplot Graph of Released Year**
 
@@ -171,7 +171,7 @@ plt.show()
 ```
 
 ##### OUTPUT:
-As displayed in the graph, most popular songs are performed by only one or two artists. There are only few outliers in the graph which are more than two performing artists. A higher number of artist count indicate collaborations which are common in hip-hop and pop genres.
+As displayed in the graph, most popular songs are performed by only one or two artists. There are only a few outliers in the graph, which are more than two performing artists. A higher artist count indicates collaborations, which are common in hip-hop and pop genres.
 
 ![image](https://github.com/user-attachments/assets/2e8e560a-be06-4694-8e37-2c6545e26968)
 ___
@@ -183,10 +183,10 @@ In the following steps of this project, there would be tasks (e.g., display the 
 # Sort the data frame in descending order based on 'streams'
 stify = tify.sort_values(by='streams', ascending=False).reset_index(drop=True)
 ```
-
+___
 ## 🎤 TOP PERFORMERS
 #### STEP 7.1: Most Streamed Track of 2023
-Which track has the highest number of streams? In order to determine the track with the highest number of stream, the syntax below was used. The output is assigned to a variable named **toptrack**.
+Which track has the highest number of streams? In order to determine the track with the highest number of streams, the syntax below was used. In my code, I specified to only output the columns: `track_name`, `artist(s)_name`, and `streams`. The output is assigned to a variable named **toptrack**.
 
 ```python
 # Track which has highest number of streams
@@ -199,13 +199,217 @@ The track that has the highest number of streams is **Blinding Lights** performe
 
 ![image](https://github.com/user-attachments/assets/9a202999-8319-425b-81c2-ea24e05d3fdf)
 
-#### STEP 7.2
-Display the top 5 most streamed tracks. It actually almost have the same syntax as the previous one, but this time, instead of `head(1)`, it would be just `head()`
+#### STEP 7.2: Top 5 Most Streamed Tracks of 2023
+Display the top 5 most streamed tracks. It actually almost has the same syntax as the previous one, but this time, instead of `head(1)`, it would be just `head()`. This line of code automatically outputs the first five rows of the data frame. The output is assigned to a variable named **top5**. 
 
+```python
+# Top 5 most streamed tracks
+top5 = stify[['track_name', 'artist(s)_name', 'streams']].head().reset_index(drop=True)
+top5
+```
+
+##### OUTPUT:
+The top five tracks that have the highest number of streams are displayed below. 
+
+![image](https://github.com/user-attachments/assets/26eb5a2d-f373-44f3-89e0-df20226fc8c7)
+
+#### STEP 7.3: Top 5 Artist with Highest Number of Tracks
+Who are the top 5 most frequent artists based on the number of tracks in the dataset? Personally, this is the most challenging part of this section of the project. The code is formulated with ChatGPT's guidance. Firstly, the column `artist(s)_name` is converted to a string format using `.astype(str)` and split by a comma using `.str.split(', ')`. 
+
+```python
+# Ensure artist(s)_name column is in string format and split by ', '
+stify['artist(s)_name'] = stify['artist(s)_name'].astype(str).str.split(', ')
+```
+
+After that, use the function `.explode` and `.value_counts()` to count the occurrences of the artist's name. To retrieve only the top 5, I used the function `.head(5)`, then it was assigned to variable `top5fr`. 
+
+```python
+# Explode the column and count occurrences
+count = stify.explode('artist(s)_name')['artist(s)_name'].value_counts()
+```
+In printing the results, "for loop" was used to list the artists in numbered order. To itemize the artists' names, the function `.item()` was used. The number of tracks (frequency) was also listed next to the artist's name for validation.
+
+```python
+# Print the top 5 most frequent artists
+top5fr = count.head(5)
+print('Top 5 Most Frequent Artists based on Number of Tracks:')
+for idx, (artist, frequency) in enumerate(top5fr.items()):
+    print(f"{idx + 1}. {artist}: {frequency}")
+```
+
+##### OUTPUT:
+The top five most frequent artists based on the number of tracks are displayed below. First on the list is Bad Bunny, with 40 tracks, followed by Taylor Swift, with 38 tracks; then The Weeknd, with 37 tracks. Lastly, SZA and Kendrick Lamar are also among the top five artists with the most tracks, with 23 number of tracks.
+
+![image](https://github.com/user-attachments/assets/3e345e44-54c5-433e-89c5-4fe86d6da653)
+___
 ## 🎼 TEMPORAL TRENDS
+#### STEP 8.1: Number of Tracks Released Over Time (Per Year)
+In analyzing the trends in a given dataset, graphing and visualization are a great help in generating insights regarding a phenomenon. For this section, it was asked to plot the number of tracks per year. In order to do that, I used the following syntax below.
+
+```python
+# Count the number of tracks released each year
+yearly = stify['released_year'].value_counts().sort_index()
+
+# Customize the graph
+sns.set(style="darkgrid")
+plt.figure(figsize=(14, 6))
+
+# Plot using line graph
+plt.plot(yearly.index, yearly.values, color='purple')
+
+# Add title and labels
+plt.title('Number of Tracks Released Yearly')
+plt.xlabel('Year')
+plt.ylabel('Tracks')
+
+# Show the plot
+plt.show()
+```
+
+##### OUTPUT:
+[EXPLANATION]
+
+![image](https://github.com/user-attachments/assets/58d6445e-d97b-4385-857c-b1b8f20b6e1c)
+
+#### STEP 8.2: Number of Tracks Released Over Time (Per Month)
+Does the number of tracks released per month follow any noticeable patterns? Which month sees the most releases?
+
+```python
+# Count the number of tracks released each month
+monthly = stify['released_month'].value_counts().sort_index()
+
+# Customize the graph
+sns.set(style="darkgrid")
+plt.figure(figsize=(14, 6))
+
+# Plot using line graph
+plt.plot(monthly.index, monthly.values, linestyle='-', color='purple')
+
+# Add title and labels
+plt.title('Number of Tracks Released Monthly')
+plt.xlabel('Month')
+plt.ylabel('Tracks')
+
+# Show the plot
+plt.xticks(monthly.index)
+plt.show()
+```
+
+##### OUTPUT:
+[EXPLANATION]
+
+![image](https://github.com/user-attachments/assets/7868c7a6-38d5-4019-a7af-fc70d3cb9cbc)
+___
 ## 🎧 GENRE AND MUSICAL CHARACTERISTICS
+#### STEP 9.1: Correlation between Streamd and Musical Attributes
+Examine the correlation between streams and musical attributes like bpm, danceability_%, and energy_%. Which attributes seem to influence streams the most?
+
+```python
+# Customize the graph
+sns.set(style="darkgrid")
+plt.figure(figsize=(14, 6))
+
+# Correlation between streams and musical attributes using scatter plot
+plt.scatter(tify['energy_%'], tify['streams'], color='skyblue', label='Energy %')
+plt.scatter(tify['danceability_%'], tify['streams'], color='pink', label='Danceability %')
+plt.scatter(tify['bpm'], tify['streams'], color='plum', label='BPM')
+
+# Add title and label
+plt.title('Correlation between Streams and Musical Attributes')
+plt.ylabel('Streams')
+
+# Add legends
+plt.legend(title='Musical Attributes')
+plt.show()
+```
+
+##### OUTPUT:
+[EXPLANATION]
+
+![image](https://github.com/user-attachments/assets/dfe6a849-0bf2-47cb-9871-bb83dcd12b6a)
+
+#### STEP 9.2: Correlation between Musical Attributes
+Is there a correlation between danceability_% and energy_%? How about valence_% and acousticness_%?
+
+**Scatterplot of Danceability Percent and Energy Percent**
+
+```python
+# Customize the graph
+sns.set(style="darkgrid")
+plt.figure(figsize=(14, 6))
+
+# Correlation between danceability_% and energy_% using scatter plot
+plt.scatter(tify['danceability_%'], tify['energy_%'], color='pink')
+
+# Add title and label
+plt.title('Correlation between Danceability and Energy')
+plt.xlabel('Danceability %')
+plt.ylabel('Energy %')
+plt.show()
+```
+
+##### OUTPUT:
+[EXPLANATION]
+
+![image](https://github.com/user-attachments/assets/93027b33-442c-4c0e-bff5-81ad9c2bece8)
+
+**Scatterplot of Valence Percent and Acousticness Percent**
+
+```python
+# Customize the graph
+sns.set(style="darkgrid")
+plt.figure(figsize=(14, 6))
+
+# Correlation between valence_% and acousticness_% using scatter plot
+plt.scatter(tify['valence_%'], tify['acousticness_%'], color='plum')
+
+# Add title and label
+plt.title('Correlation between Valence and Acousticness')
+plt.xlabel('Valence %')
+plt.ylabel('Acousticness %')
+plt.show()
+```
+
+##### OUTPUT:
+[EXPLANATION]
+
+![image](https://github.com/user-attachments/assets/ac23af04-c9fb-4d8e-af11-f3408fbcd072)
+___
 ## 🍿 PLATFORM POPULARITY
+#### STEP 10: Comparison of Platforms (Spotify, Apple Music, Deezer)
+How do the numbers of tracks in spotify_playlists, apple_playlists, and deezer_playlists compare? Which platform seems to favor the most popular tracks?
+
+```python
+# Graph
+cols = ['in_spotify_playlists','in_apple_playlists', 'in_deezer_playlists']
+fig, ax = plt.subplots(1,3,figsize=(15,5))
+for count, col in enumerate(cols):
+    sns.regplot(data=tify,x=col, y='streams', ax=ax[count], color='skyblue')
+
+# Add title
+plt.suptitle('Streams vs Number of Playlist')
+plt.show()
+```
+
+##### OUTPUT:
+[EXPLANATION]
+
+![image](https://github.com/user-attachments/assets/91cadede-376d-4fcd-99fc-3148b1dafef3)
+___
 ## 🤓 ADVANCED ANALYSIS
+#### STEP 11: Major vs. Minor
+Based on the streams data, can you identify any patterns among tracks with the same key or mode (Major vs. Minor)?
 
+#### STEP 12: Frequently Appearing Artists in Playlist or Charts
+
+___
 ## 🔗 REFERENCES
+**Riady, C. J.** Spotify Data 2023 - EDA and Visualizations. kaggle. Retrieved from https://kaggle.com/code/cijojidanriady/spotify-data-2023-eda-and-visualizations?fbclid=IwZXh0bgNhZW0CMTEAAR0zQsqA5ZVMO_1GnC8Klco7jNSIl4_UmSURIfw1VQaspEKErgtoiX6-i5A_aem_t6977cwnT-e7NsnJekeNAQ
 
+___
+## ✏️ TOOLS
+#### 📒 Jupyter Notebook
+It is a tool that allows a user to create documents containing code, equations, visualizations, and explanatory text. It is widely utilized in data science, machine learning, academic research, and scientific computing for data exploration, analysis, and presentation.
+
+#### 🧠 ChatGPT
+It is an artificial intelligence (AI) language model that uses advanced technology to generate responses to user input's needs. Moreover, it is a helpful tool that can engage in conversations, answer questions, provide explanations, assist with creative writing, and help with a range of tasks across various domains.
