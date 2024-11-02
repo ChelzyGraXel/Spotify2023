@@ -241,7 +241,7 @@ for idx, (artist, frequency) in enumerate(top5fr.items()):
 The top five most frequent artists based on the number of tracks are displayed below. First on the list is Bad Bunny, with 40 tracks, followed by Taylor Swift, with 38 tracks; then The Weeknd, with 37 tracks. Lastly, SZA and Kendrick Lamar are also among the top five artists with the most tracks, with 23 number of tracks.
 
 ![image](https://github.com/user-attachments/assets/3e345e44-54c5-433e-89c5-4fe86d6da653)
-___
+
 ## 🎼 TEMPORAL TRENDS
 #### STEP 8.1: Number of Tracks Released Over Time (Per Year)
 In analyzing the trends in a given dataset, graphing and visualization are a great help in generating insights regarding a phenomenon. For this section, it was asked to plot the number of tracks per year. In order to do that, I used the following syntax below.
@@ -300,7 +300,7 @@ Music can sometimes be personally seasonal; preferences can depend on one’s mo
 
 ![image](https://github.com/user-attachments/assets/7868c7a6-38d5-4019-a7af-fc70d3cb9cbc)
 
-## 🎧 GENRE AND MUSICAL CHARACTERISTICS
+## 🎸 GENRE AND MUSICAL CHARACTERISTICS
 #### STEP 9.1: Correlation between Streams and Musical Attributes
 To find out which attributes influence streams the most, it is necessary to do a data analysis through visualization. The following syntax was used to examine the correlation between streams and musical attributes such as bpm danceability_% and energy_%. The x-axis represents the values for the musical qualities: blue for energy_%, pink for danceability_%, and purple for BPM (beats per minute). The y-axis represents the total streams for each track in billions.
 
@@ -400,26 +400,19 @@ plt.show()
 ##### OUTPUT:
 To compare the different platforms, let us thoroughly analyze and understand the graphs one at a time.
 
-**Spotify**
+🎧 Firstly, **Spotify**, which is located on the left side, its axis has the widest range, going up to 50,0000, implying that tracks appear in many Spotify playlists compared to the other platforms. Moreover, there is a positive correlation between the in_spotify_playlists and streams. 
 
-Firstly, Spotify, which is located on the left side, its axis has the widest range, going up to 50,0000, implying that tracks appear in many Spotify playlists compared to the other platforms. Moreover, there is a positive correlation between the in_spotify_playlists and streams. 
+🎧 Secondly, **Apple Music:** which is located in the middle, has an x-axis of only up to 600, indicating that there are fewer playlists overall for each track on Apple Music compared to Spotify. There is also a positive correlation, as the number of playlists increases, the streams also increase.
 
-**Apple Music**
+🎧 Lastly, **Deezer:** which is located on the right side, has an axis that ranges into the billions. The data seems heavily concentrated along the line, indicating a consistent correlation between playlist appearances and streams. However, the distribution of points is largely incomparable to other platforms.
 
-Secondly, Apple Music, which is located in the middle, has an x-axis of only up to 600, indicating that there are fewer playlists overall for each track on Apple Music compared to Spotify. There is also a positive correlation, as the number of playlists increases, the streams also increase.
-
-**Deezer**
-
-Lastly, Deezer, which is located on the right side, has an axis that ranges into the billions. The data seems heavily concentrated along the line, indicating a consistent correlation between playlist appearances and streams. However, the distribution of points is largely incomparable to other platforms.
-
-##### CONCLUSION:
-In conclusion, Spotify is the platform that most likely favors popular tracks, as it has the widest distribution of tracks in playlists. Other platforms such as Apple Music appear to have a similar trend but on a smaller scale, while Deezer’s data is highly different from the two.
+**CONCLUSION:** In conclusion, Spotify is the platform that most likely favors popular tracks, as it has the widest distribution of tracks in playlists. Other platforms such as Apple Music appear to have a similar trend but on a smaller scale, while Deezer’s data is highly different from the two.
 
 ![image](https://github.com/user-attachments/assets/71a0ffbf-2d12-4cea-88ca-52450d9d3e8f)
 
 ## 🤓 ADVANCED ANALYSIS
 #### STEP 11: Patterns (Keys and Mode)
-Based on the streams data, can you identify any patterns among tracks with the same key or mode (Major vs. Minor)?
+To identify the patterns among tracks based on key or mode (Major and Minor), data visualization using boxplot was utilized. Using Seaborn, the codes presented below is how I was able to plot the data for Keys and Modes, separately. 
 
 ```python
 # Subplot
@@ -439,18 +432,68 @@ plt.show()
 ```
 
 ##### OUTPUT:
-[EXPLANATION]
+
+**Stream Distribution per Key**
+
+As observed in the boxplot named “Stream Distribution per Key” in the chart below, there is a wide distribution of streams across different keys. Data is somehow relatively consistent in median values and other descriptive statistics. Also, it is evident that all keys have outliers, indicating particular tracks in each key that are extremely popular. The key with the highest median is the C# compared to the other keys. This possibly implies that there is a slight preference for certain keys (e.g., C#) in popular tracks.
+
+**Stream Distribution per Mode**
+
+For the other boxplot in the chart, namely “Stream Distribution per Mode,” it is noticeable that tracks in the Major mode have a higher median compared to the Minor mode. It can be deduced that major-key tracks are slightly higher in popularity on average. Apart from that, it is also observed that both modes have relevant outliers which indicates that some tracks are popular regardless of their type of mode.
 
 ![image](https://github.com/user-attachments/assets/1bcb5658-3a99-4a16-8905-f27de8170e72)
 
 #### STEP 12: Frequently Appearing Artists in Playlist or Charts
-Do certain genres or artists consistently appear in more playlists or charts? Perform an analysis to compare the most frequently appearing artists in playlists or charts.
+There are numerous things to consider before conducting a comparison analysis among large data such as this one. One of them is to think thoroughly about what type of chart or graph is best suited to easily visualize the data. In this case, a bar graph was utilized to easily navigate the differences between the variables being compared.
+
+First and foremost, it is necessary to determine the artists consistently appearing in playlists or charts. I have decided to retrieve the top 10 most frequently appearing artists into a new data frame called ntify. Then, find the total number of appearances of each artist in charts and playlists of different musical platforms. After that, proceed to graphing.
+
+**Top 10 Artists by Combined Chart Appearances (Spotify, Deezer, Apple Music)**
+
+```python
+# Create a new dataframe that has artist(s) names as rows
+ntify = tify[['artist(s)_name', 'in_spotify_charts', 'in_deezer_charts', 'in_apple_charts', 
+              'in_spotify_playlists', 'in_deezer_playlists', 'in_apple_playlists']].copy()
+ntify['artist'] = ntify['artist(s)_name'].str.split(', ')
+ntify = ntify.explode('artist')
+
+# Sum the chart and playlists appearances across Spotify, Deezer, and Apple Music for each artist
+ntify['totalapp'] = (ntify['in_spotify_playlists'] + ntify['in_spotify_charts'] +
+                     ntify['in_apple_playlists'] + ntify['in_apple_charts'] +
+                     ntify['in_deezer_playlists'] + ntify['in_deezer_charts'])
+
+# Group by artist and calculate the total appearances
+chartcount = ntify.groupby('artist')['totalapp'].sum().reset_index()
+chartcount = chartcount.sort_values(by='totalapp', ascending=False)
+
+# Determine the top 10 artists based on total_chart_appearances
+top10 = chartcount.head(10)
+
+# Plot
+plt.figure(figsize=(14, 6))
+plt.barh(top10['artist'], top10['totalapp'], color='plum')
+
+# Add title and labels
+plt.xlabel('Total Chart Appearances Across Platforms')
+plt.title('Top 10 Artists by Combined Chart Appearances (Spotify, Deezer, Apple Music)')
+
+# Invert then show results
+plt.gca().invert_yaxis()
+plt.show()
+```
+
+##### OUTPUT:
+There are artists consistently appearing across numerous playlists and charts, displaying their broad popularity across different music platforms and diverse genres. The music of Taylor Swift, Harry Styles, and The Weeknd focuses on the genre of pop. While Bad Bunny’s and Drake’s music are under the influence of hip-hop. In streaming platforms, these genres dominated. Apart from that, there is also an instance wherein artists who blend genres, like Bad Bunny (Latin/hip-hop) and SZA (R&B/pop) are also being acknowledged. This suggests that music coordinating different genres tends to introduce their presence in playlists and charts. In general, the aforementioned genres have consistently represented multiple charts, which concludes that there are really certain genres or artists that appear on charts as they are enjoyed by the majority of the music listeners and streamers.
+
+![image](https://github.com/user-attachments/assets/76eb4549-e945-460a-a229-3b2d5720d86c)
+
+___
 
 ## 🔗 REFERENCES
 - **Riady, C. J.** Spotify Data 2023 - EDA and Visualizations. kaggle. Retrieved from https://kaggle.com/code/cijojidanriady/spotify-data-2023-eda-and-visualizations?fbclid=IwZXh0bgNhZW0CMTEAAR0zQsqA5ZVMO_1GnC8Klco7jNSIl4_UmSURIfw1VQaspEKErgtoiX6-i5A_aem_t6977cwnT-e7NsnJekeNAQ
 - **Volle, A**. (2023, April).  Streaming Media. Britannica. Retrieved from https://www.britannica.com/technology/streaming-media 
 
-## ✏️ TOOLS
+## TOOLS
 
 📒 **Jupyter Notebook**
 
