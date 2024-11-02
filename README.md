@@ -1,4 +1,6 @@
 # Exploratory Data Analysis on Spotify 2023 Dataset 🎧
+**General Guidelines**
+
 In this deliverable, you will perform an exploratory data analysis (EDA) on a dataset containing information about popular tracks on Most Streamed Spotify Songs 2023. This task aims to analyze, visualize, and interpret the data to extract meaningful insights.
 
 ## 💻 INTRODUCTION
@@ -402,9 +404,9 @@ To compare the different platforms, let us thoroughly analyze and understand the
 
 🎧 Firstly, **Spotify**, which is located on the left side, its axis has the widest range, going up to 50,0000, implying that tracks appear in many Spotify playlists compared to the other platforms. Moreover, there is a positive correlation between the in_spotify_playlists and streams. 
 
-🎧 Secondly, **Apple Music:** which is located in the middle, has an x-axis of only up to 600, indicating that there are fewer playlists overall for each track on Apple Music compared to Spotify. There is also a positive correlation, as the number of playlists increases, the streams also increase.
+🎧 Secondly, **Apple Music**, which is located in the middle, has an x-axis of only up to 600, indicating that there are fewer playlists overall for each track on Apple Music compared to Spotify. There is also a positive correlation, as the number of playlists increases, the streams also increase.
 
-🎧 Lastly, **Deezer:** which is located on the right side, has an axis that ranges into the billions. The data seems heavily concentrated along the line, indicating a consistent correlation between playlist appearances and streams. However, the distribution of points is largely incomparable to other platforms.
+🎧 Lastly, **Deezer**, which is located on the right side, has an axis that ranges into the billions. The data seems heavily concentrated along the line, indicating a consistent correlation between playlist appearances and streams. However, the distribution of points is largely incomparable to other platforms.
 
 **CONCLUSION:** In conclusion, Spotify is the platform that most likely favors popular tracks, as it has the widest distribution of tracks in playlists. Other platforms such as Apple Music appear to have a similar trend but on a smaller scale, while Deezer’s data is highly different from the two.
 
