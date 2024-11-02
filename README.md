@@ -451,8 +451,11 @@ Do certain genres or artists consistently appear in more playlists or charts? Pe
 - **Volle, A**. (2023, April).  Streaming Media. Britannica. Retrieved from https://www.britannica.com/technology/streaming-media 
 
 ## ✏️ TOOLS
-#### 📒 Jupyter Notebook
+
+📒 **Jupyter Notebook**
+
 It is a tool that allows a user to create documents containing code, equations, visualizations, and explanatory text. It is widely utilized in data science, machine learning, academic research, and scientific computing for data exploration, analysis, and presentation.
 
-#### 🧠 ChatGPT
+🧠 **ChatGPT**
+
 It is an artificial intelligence (AI) language model that uses advanced technology to generate responses to user input's needs. Moreover, it is a helpful tool that can engage in conversations, answer questions, provide explanations, assist with creative writing, and help with a range of tasks across various domains.
