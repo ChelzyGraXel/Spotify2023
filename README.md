@@ -380,13 +380,19 @@ As presented in the scatter plot below, there seems to be little to no linear re
 To navigate which platform seems to favor the most popular tracks and compare the numbers of tracks in spotify_playlists, apple_playlists, and deezer_playlists, it is necessary to plot first the data of each platforms separately. The following syntax was used.
 
 ```python
-# Graph
-cols = ['in_spotify_playlists','in_apple_playlists', 'in_deezer_playlists']
-fig, ax = plt.subplots(1,3,figsize=(15,5))
-for count, col in enumerate(cols):
-    sns.regplot(data=tify,x=col, y='streams', ax=ax[count], color='skyblue')
+# Subplot
+fig, ax=plt.subplots(1,3,figsize=(15,5))
 
-# Add title
+# Spotify Plot
+sns.regplot(data=tify, x='in_spotify_playlists', y='streams', color='pink', ax=ax[0])
+
+# Apple Music Plot
+sns.regplot(data=tify, x='in_apple_playlists', y='streams', color='plum', ax=ax[1])
+
+# Deezer Plot
+sns.regplot(data=tify, x='in_deezer_playlists', y='streams', color='skyblue', ax=ax[2])
+
+# Display the Graph
 plt.suptitle('Streams vs Number of Playlist')
 plt.show()
 ```
@@ -409,11 +415,33 @@ Lastly, Deezer, which is located on the right side, has an axis that ranges into
 ##### CONCLUSION:
 In conclusion, Spotify is the platform that most likely favors popular tracks, as it has the widest distribution of tracks in playlists. Other platforms such as Apple Music appear to have a similar trend but on a smaller scale, while Deezer’s data is highly different from the two.
 
-![image](https://github.com/user-attachments/assets/91cadede-376d-4fcd-99fc-3148b1dafef3)
+![image](https://github.com/user-attachments/assets/71a0ffbf-2d12-4cea-88ca-52450d9d3e8f)
 
 ## 🤓 ADVANCED ANALYSIS
-#### STEP 11: Major vs. Minor
+#### STEP 11: Patterns (Keys and Mode)
 Based on the streams data, can you identify any patterns among tracks with the same key or mode (Major vs. Minor)?
+
+```python
+# Subplot
+fig, ax=plt.subplots(1,2,figsize=(15,5))
+
+# Distribution of Keys
+sns.boxplot(data=tify, x='key', y='streams', hue='key', palette='pastel', ax=ax[0], legend=False)
+ax[0].title.set_text('Stream Distribution per Key')
+
+# Mode (Major vs. Minor)
+sns.boxplot(data=tify, x='mode', y='streams', hue='mode', palette='pastel', ax=ax[1])
+ax[1].title.set_text('Stream Distribution per Mode')
+
+# Display the Graph
+plt.tight_layout()
+plt.show()
+```
+
+##### OUTPUT:
+[EXPLANATION]
+
+![image](https://github.com/user-attachments/assets/1bcb5658-3a99-4a16-8905-f27de8170e72)
 
 #### STEP 12: Frequently Appearing Artists in Playlist or Charts
 Do certain genres or artists consistently appear in more playlists or charts? Perform an analysis to compare the most frequently appearing artists in playlists or charts.
