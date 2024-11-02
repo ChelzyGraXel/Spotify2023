@@ -75,7 +75,7 @@ tify['in_deezer_playlists'] = pd.to_numeric(tify['streams'],errors='coerce')
 tify['in_shazam_charts'] = pd.to_numeric(tify['streams'],errors='coerce')
 ```
 
-Using the function _pd.to_numeric_, it automatically converts the data type of a particular column from object to float. The `errors='coerce'` is a function in Pandas that tells the program to handle errors by converting invalid or non-convertible values to NaN (Not a Number) instead of raising an error.
+Using the function `pd.to_numeric`, it automatically converts the data type of a particular column from object to float. The `errors='coerce'` is a function in Pandas that tells the program to handle errors by converting invalid or non-convertible values to NaN (Not a Number) instead of raising an error.
 
 ## 📈 BASIC DESCRIPTIVE STATISTICS
 #### STEP 5.1: Mean, Median, and Standard Deviation
